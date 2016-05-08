@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    RewriteRule ^(.*)\.(gif|jpg|png|jpeg|css|js|swf)$ /public/$1.$2 [L,NC]
+
+    AddType video/ogg .ogv
+    AddType video/ogg .ogg
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+
+</IfModule>
